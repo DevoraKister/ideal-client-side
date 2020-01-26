@@ -1,0 +1,25 @@
+ #JobDescribe {
+    min-height:200px;
+    max-height:500px;
+    /* width:400px; */
+    resize:vertical; 
+    line-height:15px;
+padding-top:5px;
+text-align: right;
+direction: rtl;
+  }
+  #JobRequire {
+    min-height:200px;
+    max-height:500px;
+    /* width:400px; */
+
+    resize:vertical; 
+    line-height:15px;
+padding-top:5px;
+text-align: right;
+direction: rtl;
+  }
+.container{
+text-align: right;
+direction: rtl;
+}

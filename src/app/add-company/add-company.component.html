@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class=" col-8" id="body">
+    <div class="row justify-content-center">
+
+      <div class="col-md-6 col-lg-6 col-xl-6 col-sm-8">
+
+
+        <p> שם החברה</p>
+        <input type="text" [(ngModel)]="currentCompany.CompanyName" class="col" class="form-control" />
+
+        <p>רחוב </p>
+        <input type="text" [(ngModel)]="currentCompany.CompanyStreet" class="col form-control" />
+        <p>מספר בנין </p>
+        <input type="number" [(ngModel)]="currentCompany.CompanyNumBuild" class="col form-control" />
+        <p>המייל של החברה </p>
+        <input type="email" [(ngModel)]="currentCompany.CompanyMail" class="col form-control" />
+        <p>טלפון </p>
+        <input type="text" [(ngModel)]="currentCompany.CompanyTel" class="col form-control" />
+        <p>אזור:</p>
+        <select #area1 (change)="getCity($event)" class="col form-control">
+          <option *ngFor="let sub of jobParameters.Areas" value="{{sub.AreaId}}">{{sub.AreaName}}</option>
+        </select>
+
+        <p>עיר:</p>
+
+        <select *ngIf="cities" (change)="city($event.target.value)" class="col form-control">
+          <option *ngFor="let c of cities" value="{{c.CityId}}">{{c.CityName}}</option>
+        </select>
+
+        <select *ngIf="!cities" (change)="city($event.target.value)" class="col form-control">
+          <option *ngFor="let c of jobParameters.Cities" value="{{c.CityId}}">{{c.CityName}}</option>
+        </select>
+        <p></p>
+        <button mat-button (click)="addCompanyParameters(area1)" type="button" value="הוסיפי עכשיו"
+          style="background-color: tomato" class="col form-control">הוספת החברה</button>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <form [formGroup]="stateForm">
+  <mat-form-field>
+    <input type="text" matInput placeholder="States Group" formControlName="stateGroup" required [matAutocomplete]="autoGroup">
+      <mat-autocomplete #autoGroup="matAutocomplete">
+        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+          <mat-option *ngFor="let name of group.names" [value]="name">
+            {{name}}
+          </mat-option>
+      </mat-optgroup>
+    </mat-autocomplete>
+  </mat-form-field>
+</form> -->

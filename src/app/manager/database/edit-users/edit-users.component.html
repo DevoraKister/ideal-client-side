@@ -1,0 +1,52 @@
+<section class=" pagination-centered">
+    <div class="container justify-content-center">
+      <div class="row justify-content-center">
+        <!-- Free Tier -->
+        <div class="col-6">
+            <div>
+                <input type="button" (click)="addUser()"  class="btn btn-block btn-primary text-uppercase" value="להוספת משתמש חדש">
+            </div>
+          <div *ngFor="let j of users" class="center-block">
+  
+            <div class="card mb-5 mb-lg-0">
+  
+              <div class="card-body">
+                
+                <h5 class="card-title text-muted text-uppercase text-center">{{j.UserName}}</h5>
+                <h6 class="card-price text-center"><span class="period">{{j.UserMail}}</span></h6>
+                <hr>
+                <div class="fa-ul">
+                    <p *ngIf="j.UserTel"><b>:טלפון </b></p>
+                    <p style="white-space:pre-wrap;">{{j.UserTel}}</p>
+                  <div class="facebook">
+                    <p><b>:עיר </b></p>
+                    <select disabled>
+                      <option *ngFor="let c of jobParameters.Cities" [selected]="c.CityId ==j.UserCityId?true:false">
+                        {{c.CityName}}</option>
+                    </select>
+                    <P>מקצוע:</P>
+                    <select disabled>
+                      <option *ngFor="let c of jobParameters.SubjectJob" [selected]="c.SubId ==j.UserSubId?true:false">
+                        {{c.SubName}}</option>
+                    </select>
+                  </div>
+                </div>
+                <input type="button" (click)="removeUser(j.UserId)" class="btn btn-block btn-primary text-uppercase"
+                  value="להסרת המשתמש">
+                  <input type="button" (click)="edit(j.UserId)" class="btn btn-block btn-primary text-uppercase"
+                  value="לעדכון פרטי המשתמש">
+                  <!-- <input type="button" (click)="removeUser(j.UserId)" class="btn btn-block btn-primary text-uppercase"
+                  value="להסרת המשתמש"> -->
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="pageEvent = getServerData($event)" [hidePageSize]="true">
+    </mat-paginator>
+  
+  </section>
+  

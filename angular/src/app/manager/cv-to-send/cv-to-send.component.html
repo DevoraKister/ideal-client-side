@@ -1,0 +1,21 @@
+<form>
+  <h2>
+    מי נרשם למשרה זו?
+  </h2>
+
+  <button mat-raised-button matTooltip="שליחת קו''ח" matTooltipPosition="above" (click)=" sendAllCv()"
+    style="background-color:tomato">שליחת כל הקו"ח ביחד (מומלץ)</button>
+  <br>
+  <br>
+  <br>
+  <div *ngFor="let user of managerService.signedUser">
+    {{user.UserName}}<br>
+    {{user.UserTel}}<br>
+    {{user.UserMail}}<br>
+    <!-- {{user.UserMail}}<br> -->
+
+    <button mat-raised-button matTooltip="שליחת קו''ח" matTooltipPosition="above" type="button" 
+      (click)="sendCv(user.UserId)" name="cv">שליחת קו"ח
+    </button>
+  </div>
+</form>

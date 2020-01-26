@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+  <div class=" col-8" id="body">
+    <div class="row justify-content-center">
+
+      <div class="col-md-6 col-lg-6 col-xl-6 col-sm-8">
+        <h1 style="color: tomato"> ברוכה הבאה לשרות הסוכן החכם</h1>
+        <div *ngIf="!currentUser.UserName">
+          <p>על מנת להרשם לסוכן החכם, החם ,<br> עליך להכנס תחת פרופיל מחפשת עבודה</p>
+          <a [routerLink]="['/login/login-user']"> הכנסי עכשיו</a><p></p>
+          <a [routerLink]="['/login/register-user']">הרשמי עכשיו</a>
+          <img src="../../assets/smart-agaent.png" style="width:30vw">
+          <br>
+          <br>
+          <br>
+        </div>
+        <div *ngIf="currentUser.UserName&&details">
+          <p>להלן פרטיך האישיים הנמצאים במאגר</p>
+          <p> המערכת תתן לך את השרות הטוב ביותר, לפי הפרטים הנ"ל </p><br>
+          <br>
+          <br>
+          <p> אם יש צורך, באפשרותך לעדכן פרופיל בשדות הבאים</p>
+
+          <br>
+          <p>שם:</p>
+          <input type="text" [(ngModel)]="currentUser.UserName" class="col" class="form-control" />
+          <p>טלפון:</p>
+          <input type="text" [(ngModel)]="currentUser.UserTel" class="col" class="form-control" />
+          <p>כתובת מייל:</p>
+          <input type="text" [(ngModel)]="currentUser.UserMail" class="col" class="form-control" />
+          <div *ngIf="jobParameters"></div>
+
+
+
+
+          <!-- <mat-form-field class="col-3" style="text-align: right">
+            <mat-label>אזור</mat-label>
+            <mat-select name="area" #area1 (mouseout)="getCity(area1)">
+              <mat-option *ngFor="let sub of jobParameters.Areas" [value]="sub.AreaId" style="text-align: right">
+                {{sub.AreaName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+          <mat-form-field class="col" style="text-align: right">
+            <mat-label>תחום משרה</mat-label>
+            <mat-select name="sub" #sub [(value)]="currentUser.UserSubId">
+              <mat-option *ngFor="let sub of jobParameters.SubjectJob" [value]="currentUser.UserSubId"
+                style="text-align: right">
+                {{sub.SubName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col" style="text-align: right">
+            <mat-label>עיר</mat-label>
+            <mat-select name="city" #city [(value)]="currentUser.UserCityId">
+              <mat-option *ngFor="let c of jobParameters.Cities"  [value]="currentUser.UserCityId"
+                style="text-align: right">
+                {{c.CityName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col" style="text-align: right">
+            <mat-label>חלקיות משרה</mat-label>
+            <mat-select name="part" #part [(value)]="currentUser.UserPartId" >
+              <mat-option *ngFor="let c of jobParameters.Parts" [value]="currentUser.UserPartId"
+                style="text-align: right">
+                {{c.PartName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col" style="text-align: right">
+            <mat-label>באיזה תדירות תרצי לקבל עדכונים?</mat-label>
+            <mat-select name="time" #time1 >
+              <mat-option *ngFor="let t of time" value="{{t.id}}" style="text-align: right">
+                {{t.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button matTooltip="הרשמי" class="col-12" style="background-color:tomato"
+            (click)="updateDetails(sub,city,part,time1)" matTooltipPosition="above">הרשמי
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

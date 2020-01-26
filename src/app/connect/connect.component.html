@@ -1,0 +1,191 @@
+<!-- <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+<h3>צור קשר</h3>
+<p>שם</p>
+<input type="text" name="name" [(ngModel)]="name" required> 
+<p>טלפון</p>
+<input type="text" name="phone" #phone [(ngModel)]="phone" required>
+ <p>מייל</p>
+<input type="email" #mail [(ngModel)]="mail" required> 
+<p>פרטי פניה</p>
+<input type="text" [(ngModel)]="details" required> 
+<input type="submit" value="שלח" [disabled]="!myForm.form.valid">
+</form> -->
+
+<form>
+    <div id="pp">
+        <div class="jumbotron" style="background-color: white">
+            <!-- <div id="img"><img src="../../assets/OGMQXH0.jpg" height="50%"  ></div> -->
+            <div class="container">
+                <!-- <h2 style="text-align: center">יצירת קשר</h2> -->
+
+                <div class="row">
+                    <div class=" col-6 ">
+                            <br>
+                            <br>
+                        
+                        <h2 style="text-align: center;direction: rtl">יש לך שאלה? <span style="color: tomato">אנחנו כאן
+                                :)</span></h2>
+
+                        <img  src="../../assets/phone.png" width="400px" style="text-align: center;">
+                    </div>
+
+                    <!-- <app-adv class="col-3"></app-adv> -->
+                    <div class="col-md-6 col-6 " id="body">
+
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="row justify-content-center">
+                            <br>
+                            <br>
+                            <br>
+                            <div class="form-group" class="col-10">
+                            <br>
+                            <!-- <br> -->
+
+                                <label>שם</label>
+                                <!-- <input type="text" formControlName="name" class="form-control" -->
+                                <input type="text" formControlName="name" class="form-control"
+                                    [(ngModel)]="registerForm.name"
+                                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required">הכנסי שם, פליז </div>
+                                </div>
+                            </div>
+                            <div class="form-group" class="col-5">
+                                <label>טלפון</label>
+                                <!-- <input type="text" formControlName="phone" 
+                        pattern="[2-9]{1}\d{2}" class="form-control" [(ngModel)]="registerForm.phone"   [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" /> -->
+                                <input type="text" formControlName="phone" class="form-control"
+                                    [(ngModel)]="registerForm.phone"
+                                    [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.phone.errors.required">לא הכנסת טלפון</div>
+                                    <div
+                                        *ngIf="f.phone.errors.pattern||f.phone.errors.minlength||f.phone.errors.maxlength">
+                                        הטלפון לא תקין</div>
+
+                                </div>
+                            </div>
+                            <div class="form-group" class="col-5">
+                                <label>מייל</label>
+                                <input type="text" formControlName="email" class="form-control"
+                                    [(ngModel)]="registerForm.email"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">אופס! שכחת למלא מייל</div>
+                                    <div *ngIf="f.email.errors.email">כתובת המייל לא תקנית</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" class="col-10">
+                                <label> נושא הפניה</label>
+                                <input type="text" formControlName="subject" class="form-control"
+                                    [(ngModel)]="registerForm.subject" name="details" />
+                            </div>
+
+                            <div class="form-group" class="col-10">
+                                <label> פרטי פניה</label>
+                                <textarea type="text" formControlName="details" class="form-control"
+                                    [(ngModel)]="registerForm.details" name="details"></textarea>
+                            </div>
+                            <br>
+
+                            <div class="form-group" class="col-10">
+                            <br>
+
+                                <button [disabled]="loading" class="btn btn-primary col"
+                                    style="background-color:tomato">שליחה</button>
+                            <br>
+
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">לא הכנסת סיסמא</div>
+                            <div *ngIf="f.password.errors.minlength">הסיסמא חייבת להכיל לפחות 6 תווים</div>
+                            <div *ngIf="f.password.errors.maxlength">הסיסמא חייבת להכיל בין 6 ל-8 תווים</div>
+                            <div *ngIf="f.password.errors.pattern">הסיסמא חייבת להכיל לפחות אות אחת באנגלית וספרה אחת</div>
+                        
+                          </div>
+                    </div> -->
+
+
+<!-- <form>
+    <div id="pp">
+        <div class="jumbotron">
+            <div class="container">
+                <h2 style="text-align: center">יצירת קשר</h2>
+
+                <div class="row">
+                    <div class="col-md-6 offset-md-3" id="body">
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label>שם</label>
+                                <input type="text" formControlName="name" class="form-control"
+                                    [(ngModel)]="registerForm.name"
+                                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required">אופסהלה, לא הכנת שם :)</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>טלפון</label>
+                                <input type="text" formControlName="phone" class="form-control"
+                                    [(ngModel)]="registerForm.phone"
+                                    [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.phone.errors.required">לא הכנסת טלפון</div>
+                                    <div
+                                        *ngIf="f.phone.errors.pattern||f.phone.errors.minlength||f.phone.errors.maxlength">
+                                        הטלפון לא תקין</div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>מייל</label>
+                                <input type="text" formControlName="email" class="form-control"
+                                    [(ngModel)]="registerForm.email"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">אופס! שכחת למלא מייל</div>
+                                    <div *ngIf="f.email.errors.email">כתובת המייל לא תקנית</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label> נושא הפניה</label>
+                                <input type="text" formControlName="subject" class="form-control"
+                                    [(ngModel)]="registerForm.subject" name="details" />
+                            </div>
+
+
+                            <div class="form-group">
+                                <label> פרטי פניה</label>
+                                <textarea type="text" formControlName="details" class="form-control"
+                                    [(ngModel)]="registerForm.details" name="details"></textarea>
+                            </div>
+
+
+                            <div class="form-group">
+                                <button [disabled]="loading" class="btn btn-primary col"
+                                    style="background-color:tomato">שלח</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form> -->

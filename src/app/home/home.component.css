@@ -1,0 +1,160 @@
+/* #background-image{
+    width: 100vw;
+    height: 25vh;
+  background-image: url("../../assets/2595009.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  
+} */
+#background-image{
+    width: 100vw;
+    height: 60vh;
+  background-image: url("../../assets/2442414.jpg");
+  background-attachment: fixed;
+  background-size:cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  
+}c
+#goToJobs{  
+  /* animation: reveal 7s infinite;
+  animation: slidein 7s infinite; */
+      position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #fff;
+    border-radius: 33px;
+}
+
+#container{
+    /* background: white; */
+    height:100%;
+    width:100%;
+    position: absolute;
+    margin: 0;
+    padding:0;
+  }
+  .center {
+    position: relative;
+    top:29%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    /* border: 1px solid #fff; */
+    border-radius: 33px;
+  }
+  
+  .box {
+    padding: 0;
+    margin: 0;
+    width:300px;
+    height: 160px;
+  }
+  
+  .button{
+    padding:0;
+    margin:0;
+    width:30vw;
+    height:15vh;
+    float: left;
+    background-color:#404040;
+    overflow: hidden;
+    cursor:pointer;
+    z-index:20;
+    border-radius:5px;
+    
+  }
+  
+  .button:hover {
+    -webkit-animation: ButtonScale 0.5s ease-out;
+    animation: ButtonScale 0.8s ease-out;
+  }
+  
+  @-webkit-keyframes ButtonScale {
+    0% {height:15vh;}
+    75% {height:70px;}
+    85% {height:15vh;}
+    92% {height:66px;}  
+    100% {height:15vh;}
+  }
+  
+  .drop {
+    height:50px;
+    width:25px;
+    border-radius:50%;
+    background: #404040;
+    position:relative;
+    transform: rotate(-45deg);
+    top:47px;
+    left:61px;
+  }
+  
+  .button:hover + .drop {
+    -webkit-animation: ButtonScale 1s ease-out;
+    animation: DropScale 1s ease-out;
+  }
+  
+  @-webkit-keyframes DropScale {
+    0% {top:47px; left:61px;height:50px;width:25px;opacity:1}
+    37.5% {top:25px;left:35px;height:40px;width:25px;opacity:1}
+    50% {top:15px;left:18px;height:20px;width:25px;}
+    75% {top:15px;left:18px;height:10px;width:12.5px;opacity:0;}  
+    100% {top:15px;left:18px;height:20px;width:25px;opacity:0;}
+  }
+  
+  .moon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 8px -5px 0 0 red;
+    position: relative;
+  }
+#goToJobs{
+    color: white;
+}
+#getStart{
+  direction: rtl;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  margin-top: 4vh;
+  margin-right: 4vh;
+  margin-left: 1.1em;
+}
+
+
+
+.cd-modal-action {
+  position: relative;
+}
+.cd-modal-action .btn {
+  width: 12.5em;
+  height: 4em;
+  background-color: #123758;
+  border-radius: 5em;
+  transition: color 0.2s 0.3s, width 0.3s 0s;
+}
+.cd-modal-action .btn.to-circle {
+  width: 4em;
+  color: transparent;
+  transition: color 0.2s 0s, width 0.3s 0.2s;
+}
+.cd-modal-action .cd-modal-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-2em);
+  width: 4em;
+  height: 4em;
+  background-color: #123758;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s 0.5s;
+}
+.cd-modal-action .cd-modal-bg.is-visible {
+  opacity: 1;
+  visibility: visible;
+}

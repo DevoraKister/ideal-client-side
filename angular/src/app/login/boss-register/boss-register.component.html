@@ -1,0 +1,70 @@
+<!-- <body class="align" *ngIf="!notRegistered"> -->
+
+<body class="align" *ngIf="!notRegistered">
+
+  <div class="grid">
+
+    <form #bossRegisterForm="ngForm" class="form login"
+      (ngSubmit)="password.reset();mail.reset()">
+      <!-- (ngSubmit)="password.reset();mail.reset()"> -->
+      <h2 style="text-align: center"> רישום משתפת משרה</h2>
+      <div class="form__field" id="login-show">
+        <label for="login__username"><svg class="icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
+          </svg><span class="hidden">שם</span></label>
+        <input id="login__username" type="text" name="username" class="form__input" placeholder="שם"
+          [(ngModel)]="currentBoss.BossName" required>
+      </div>
+
+      <div class="form__field">
+        <label for="login__password"><svg class="icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
+          </svg><span class="hidden">סיסמא</span></label>
+        <input id="login__password" type="password" name="password" class="form__input" placeholder="סיסמא"
+          [(ngModel)]="currentBoss.BossPassword" required>
+      </div>
+      <div class="form__field">
+        <label for="login__phone"><svg class="icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#phone"></use>
+          </svg><span class="hidden">סיסמא</span></label>
+        <input id="login__password" type="text" name="phone" class="form__input" placeholder="טלפון"
+          [(ngModel)]="currentBoss.BossTel" required>
+      </div>
+      <div class="form__field">
+        <label for="login__phone"><svg class="icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use>
+          </svg><span class="hidden">סיסמא</span></label>
+        <input id="login__password" type="email" name="mail" class="form__input" placeholder="כתובת מייל"
+          [(ngModel)]="currentBoss.BossMail" required>
+      </div>
+      <h4 style="text-align: center;direction: rtl"> החברה שבה אני עובדת:</h4>
+      <!-- <p>בחרי את החברה</p> -->
+      <div class="form__field">
+        <label for="login__phone"><svg class="icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use>
+          </svg><span class="hidden">סיסמא</span></label>
+
+        <select (change)="company1($event.target.value)" class="form__input">
+          <option *ngFor="let c of company" value="{{c.CompanyId}}">{{c.CompanyName}}</option>
+
+        </select>
+      </div>
+      <!-- <a [routerLink]="['/add-company']">  החברה לא קימת?? שתף חברה </a> -->
+      <input type="button" id="addCompany" value="החברה לא קיימת? הוסיפי כאן !" (click)="addCompany()"  matTooltip="לא מלאת את כל הפרטים"/>
+      <br />
+      <mat-checkbox #BossIsConnection >אני מסכימה להיות איש קשר</mat-checkbox>
+      <!-- <p>אני מסכימה להיות איש קשר</p>
+      <input type="checkbox" #BossIsConnection /> -->
+      <br />
+      <div class="form__field">
+        <input (click)="register(BossIsConnection)" type="submit" value="הרשמי"
+          [disabled]="!bossRegisterForm.form.valid">
+      </div>
+    </form>
+  </div>
+
+
+
+</body>
+
+<app-add-company *ngIf="notRegistered"></app-add-company>

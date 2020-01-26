@@ -1,0 +1,102 @@
+<section class=" pagination-centered">
+  <div class="container justify-content-center" style="width: 100%">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <br>
+        <br>
+        <h1 style="color: greenyellow;text-align:center">אזור אישי</h1>
+        <br>
+        <div *ngIf="myJobs.length==0" style="height:85vh;background-color:white;text-align:center;direction: rtl">
+          <br>
+          <br>
+         - - -
+         <br>
+         <br>
+
+          אין משרות העונות להגדרת החיפוש.<br>להניע >>>
+        </div>
+        <!-- <p *ngIf="myJobs==0" style="color: white;text-align:center;">אין משרות העונות להגדרת החיפוש.<br>לקבלת תוצאות
+          נסי לחפש ערכים דומים.</p> -->
+        <div *ngFor="let j of myJobs" class="center-block  col-sm-12	col-md-12	col-lg-12	col-xl-12">
+
+          <div class="card mb-5 mb-lg-0">
+            <div style="text-align:center">
+
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-muted text-uppercase text-center">{{j.JobRole}}</h5>
+              <h6 class="card-price text-center" id="company"
+               matTooltipPosition="above"><span class="period">{{j.CompanyName}}</span>
+              </h6>
+              <hr>
+              <div class="fa-ul">
+                <p id="date" *ngIf="!j.JobDateShow>0">היום jlgjj</p>
+                <p id="date" *ngIf="j.JobDateShow>0">לפני {{j.JobDateShow}} יום</p>
+                <star-rating [value]="j.JobStars" checkedcolor="#ccea3c" uncheckedcolor="grey" size="20px"
+                  readonly="true"></star-rating>
+                <p><b>:תאור תפקיד</b></p>
+                <p style="white-space:pre-wrap;">{{j.JobDescribe}}</p>
+                <label for={{j.JobId}}>
+                  <i *ngIf="more" class="material-icons" matTooltip="עוד" matTooltipPosition="above">
+                    unfold_less
+                  </i>
+
+                </label>
+                <input type="checkbox" class="checkboxHidden" id={{j.JobId}}>
+                <div class="facebook">
+                  <p><b>דרישות</b></p>
+                  <p style="white-space:pre-wrap;">{{j.JobRequire}}</p>
+                  <p><b>מס' שנות ניסיון: </b>{{j.JobExperience}}</p>
+                  <p><b>סביבת עבודה: </b>{{j.WSName}}</p>
+                  <p><b>חסימת אינטרנט: </b>{{j.OutNetName}}</p>
+                  <p><b>תחום משרה: </b>{{j.PartName}}</p>
+                  <p><b>עיר: </b>{{j.CityName}}</p>
+                </div>
+              </div>
+              <div *ngIf="isBoss"
+                style="background-color: #a8a8a8;text-align:center;direction: rtl;margin-top: 60px;color: white">
+                <h3 style="color: white"> המשרה כבר לא רלוונטית???</h3>
+                <p></p>
+                <mat-checkbox [(ngModel)]="isByUs" style="color: white">האתר עזר לי למצא את המועמדת הנבחרת!!!
+                </mat-checkbox>
+                <br>
+                <button mat-raised-button *ngIf="!j.JobSigned" (click)="closeJob(j.JobId)" class="col-6"
+                  matTooltip="המשרה נתפסה? הסרה" matTooltipPosition="above"
+                  aria-label="Button that displays a tooltip in various positions">
+                  <!-- <p>מחיקה</p>  -->
+                  <i class="material-icons" style="color: rgb(97, 10, 68);">
+                    <!-- <i class="material-icons" style="color: chartreuse;"> -->
+                    delete
+                  </i>
+                </button>
+              </div>
+              <div *ngIf="!isBoss">
+                <p *ngIf="j.JobDateCaughtJob" style="color: rgb(172, 10, 10)">משרה זו סומנה ע"י המעסיק כבלתי רלוונטית
+                  יותר </p>
+                <input *ngIf="!j.JobDateCaughtJob" type="button" (click)="registerToJob(j.JobId)"
+                  class="btn  btn-primary " value="שליחה חוזרת">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container justify-content-center" *ngIf="!load">
+    <div class="row">
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent = getServerData($event);gotoJob()" [hidePageSize]="true" class="col-8">
+      </mat-paginator>
+
+    </div>
+
+    <div *ngIf="isShow">
+
+      <label> <i class="material-icons" (click)="gotoTop()" id="scroll">keyboard_arrow_up</i></label>
+    </div>
+
+  </div> -->
+</section>
+<br>
+<br>
+<br>

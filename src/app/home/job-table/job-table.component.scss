@@ -1,0 +1,108 @@
+body { background-color: #e1e1e1;
+    font-family: 'Nunito', sans-serif;}
+  
+  section {
+    margin: 50px 30vw;  
+  }
+  
+  .accordion_check {
+    display: none;
+  }
+  
+  .accordion_title, .accordion{
+    padding: 2em;
+    font-size: 1.1 em;
+    padding: 0 40px;
+    transform: translate3D();
+    opacity: 0;
+    height: 0%;
+    background-color: #fff;
+    border: 1px solid rgba(102,102,102,0.1);
+    transition: all ease-in-out 300ms;
+      &:hover {
+     box-shadow: 0px 10px 60px -25px rgba(0, 0, 0, 0.4);
+    }
+  }
+  
+  .accordion_title{
+    position: relative;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 2em;
+    opacity: 1;
+    background: linear-gradient(to bottom, rgba(239,239,239,1) 0%,rgba(255,255,255,1) 25%,rgba(255,255,255,1) 75%,rgba(239,239,239,1) 100%);
+   min-height: 20px;
+  
+  }
+  
+  i {
+    &:before, &:after {
+      width: 10px;
+      content: "";
+      height: 4px; 
+      top:100%;
+      bottom:100%;
+      position: absolute;
+      border-radius: 20%;
+      transform: rotate(40deg);
+      background-color: #DE3867;
+      right:35px;
+      margin: auto 0;
+      transition: all ease-in-out 300ms;   
+    }
+    &:before {
+      transform: rotate(-40deg);
+      right:30px;
+    }
+  }
+  
+  //Copy and change the number when adding new part
+  
+  #accordion_check-1:checked {
+    & ~ .accordion-1 {
+    height: inherit;
+    padding: 40px;
+    opacity: 1;
+    box-shadow: 0px 10px 60px -25px rgba(0, 0, 0, 0.4);
+     }
+    & ~ .accordion_label-1 .accordion_title {
+  
+     box-shadow: none;
+   
+    }
+    
+    & ~ .accordion_label-1 i {
+      &:before {
+        right: 36px;
+      }
+      &:after {
+        right: 30px;
+      }
+    }
+  }
+  
+  //Copy and change the number when adding new part
+  
+  #accordion_check-2:checked {
+    & ~ .accordion-2 {
+    height: inherit;
+    padding: 40px;
+    opacity: 1;
+    box-shadow: 0px 10px 60px -25px rgba(0, 0, 0, 0.4);
+     }
+    & ~ .accordion_label-2 .accordion_title {
+  
+     box-shadow: none;
+   
+    }
+    
+    & ~ .accordion_label-2 i {
+      &:before {
+        right: 36px;
+      }
+      &:after {
+        right: 30px;
+      }
+    }
+  }
+  

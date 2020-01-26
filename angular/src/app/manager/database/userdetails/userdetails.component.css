@@ -1,0 +1,8 @@
+.row{
+    text-align: center;
+    direction: rtl;
+}
+#body{
+    background-color:ghostwhite;
+    box-shadow: rgb(66, 77, 87);
+}

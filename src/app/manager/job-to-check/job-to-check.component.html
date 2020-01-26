@@ -1,0 +1,64 @@
+<div *ngIf="load" style="width: 100vw;height:85vh;background-color:white">
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  <div class="loader2"></div>
+</div>
+<br>
+<br>
+
+<section class=" pagination-centered" *ngIf="!load">
+  <div class="container justify-content-center">
+    <div class="row justify-content-center">
+      <!-- Free Tier -->
+      <div class="col-6">
+        <!-- <div class="col-lg-6"> -->
+        <div *ngFor="let j of Jobs" class="center-block">
+
+          <div class="card mb-5 mb-lg-0">
+
+            <div class="card-body">
+              <h5 class="card-title text-muted text-uppercase text-center">{{j.JobRole}}</h5>
+              <h6 class="card-price text-center" (click)="showCompanyDetails(j.CompanyId)"><span class="period">{{j.CompanyName}}</span></h6>
+              <hr>
+              <div class="fa-ul">
+                <p><b>:תאור תפקיד</b></p>
+                <p style="white-space:pre-wrap;">{{j.JobDescribe}}</p>
+                <!--  <label for={{j.JobId}}> קרא עוד </label>
+                <input type="checkbox" class="checkboxHidden" id={{j.JobId}}> -->
+                <div class="facebook">
+                  <p><b>דרישות</b></p>
+                  <p style="white-space:pre-wrap;">{{j.JobRequire}}</p>
+                  <p><b>מס' שנות ניסיון: </b>{{j.JobExperience}}</p>
+                  <p><b>סביבת עבודה: </b>{{j.WSName}}</p>
+                  <p><b>חסימת אינטרנט: </b>{{j.OutNetName}}</p>
+                  <p><b>תחום משרה: </b>{{j.PartName}}</p>
+
+                </div>
+
+              </div>
+              <input type="button" (click)="OKTheJob(j.JobId)" class="btn btn-block btn-primary text-uppercase col-10"
+                value="אשור משרה ככשרה"  matTooltip="העברת המשרה ללח המשרות הראשי"
+                style="    display: initial;">
+                <button type="button" (click)="removeJob(j.JobId)" class="btn btn-primary col-2"
+                matTooltip=" המשרה לא ראויה? הסירי עכשיו " style="background-color: tomato;height: 6.5;"><i class="material-icons">delete</i></button>
+              <!-- <a href="#" class="btn btn-block btn-primary text-uppercase">הרשם</a> -->
+            </div>
+          </div>
+        </div>
+        <!-- Plus Tier -->
+
+        <!-- Pro Tier -->
+
+      </div>
+    </div>
+  </div>
+  <div style="margin-right:45vw">
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="pageEvent = getServerData($event)" [hidePageSize]="true">
+    </mat-paginator>
+  </div>
+
+</section>

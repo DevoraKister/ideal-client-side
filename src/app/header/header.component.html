@@ -1,0 +1,233 @@
+<!-- <body (scroll)="scrollFunction()">
+<div>
+</div>
+<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+         <p *ngIf="hi">Hi</p>
+  <p *ngIf="userService.user">{{userService.user?.UserName}}</p> 
+  <p *ngIf="userService.boss">{{userService.boss?.BossName}}</p>
+<a [routerLink]="['/show-jobs',list | json]">giugoggiu</a>
+<a href="http://localhost:4200/show-jobs?list=[1,2,3,]">kokoh</a>
+
+
+  <a  [routerLink]="['/login/login-user']" >בניסת משתמש</a>
+  <a [routerLink]="['/login/login-boss']" >כניסת מפרסם</a>
+<a [routerLink]="['/home/job-table']">בית!!!!!!!!!!!!!!!!!!!!!</a>
+<a [routerLink]="['/about']">אודות</a>
+<a [routerLink]="['/rabanim']"> רבנים</a>
+<a [routerLink]="['/rabanim']"> מאמרים</a>
+<a [routerLink]="['/forum']"> פורום</a>
+this.router.navigate(['sign-to-job',idJob]); 
+<a [routerLink]="['/show-jobs',1]">giugoggiu</a>
+<a [routerLink]="['/recomend']">המלצות למשרה</a>
+<a [routerLink]="['/connect']">צור קשר</a>
+<input type="button" (click)="isBoss()" value="שיתוף משרה"> 
+<a [routerLink]="['/smart-agent']">סוכן חכם</a>
+
+        </div>
+        <div><p>{{name}}</p></div>
+</nav> -->
+<!-- glyphicon glyphicon-edit לאייקון -->
+<span class="pull-right glyphicon glyphicon-edit"></span>
+<header id="header" *ngIf="isScroll==true">
+
+
+  <div class="header-nav">
+    <nav id="home-nav" style="background-color: rgba(182, 182, 182, 0.90000) ;"
+      class="navbar navbar-expand-md nav-pills navbar-inverse navbar-light  fixed-top shadow-lg">
+      <!-- class="navbar navbar-expand-md nav-pills navbar-inverse navbar-light bg-white fixed-top shadow-lg"> -->
+      <!-- שינוי <i class="icon-phone"></i><i class="material-icons" >person</i> -->
+
+        <!-- <i class="material-icons img-responsive img-rounded" id="person">person</i> -->
+        <!-- <img class="img-responsive img-rounded"
+          src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+          alt="User picture"> -->
+
+
+        <!-- <p *ngIf="hi">Hi</p> -->
+      <span (click)="area()" title="אזור אישי" class="withSvgStack_120drhm horizontal-box align-items-absolute-center" style="cursor: pointer; width:40px;height:40px;overflow:hidden;border:0px solid #e3e4e5;border-radius:50%;background-color:tomato;" data-reactid="128"><svg class="SvgIcon_8wfvj4" style="fill:#FFF;height:24px;width:24px;margin-left: 7px" viewBox="0 0 48 48" role="img" aria-labelledby="UserFilled24dc51df-4469-4a78-941c-a8f349caa67f UserFilled24dc51df-4469-4a78-941c-a8f349caa67fDesc" xmlns="http://www.w3.org/2000/svg" data-reactid="129"><title id="UserFilled24dc51df-4469-4a78-941c-a8f349caa67f" data-reactid="130">אזור אישי</title><path d="M33.5,10.4C33.7,5.1,29.2,1,24,1s-9.8,4.2-9.5,9.4c0.1,1.1,1.1,6.3,1.1,6.3c0.8,4.5,3.8,8.3,8.4,8.3s7.6-3.8,8.4-8.4C32.4,16.6,33.4,11.4,33.5,10.4z" role="presentation" data-reactid="131"></path><path d="M47,47H1l1.1-8.2c0.5-2.7,2.9-4.3,5.6-4.9L24,31l16.3,2.9c2.7,0.6,5.1,2.2,5.5,4.9L47,47z" role="presentation" data-reactid="132"></path></svg></span>
+
+          <!-- 
+      <div class="user-pic">
+        <img class="img-responsive img-rounded" title="התנתקי" (click)="trunOff()"
+          src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+          alt="User picture">
+      </div> -->
+      <div class="user-info">
+        <span class="user-name" >
+            <p *ngIf="!userService.user&&!userService.boss">שלום אורחת</p>
+            <p *ngIf="userService.user?.UserName" title="התנתקי" (click)="trunOff()" class="logout">  {{userService.user?.UserName}}    </p>
+            <p *ngIf="userService.boss?.BossName" title="התנתקי" (click)="trunOff()" class="logout">  {{userService.boss?.BossName}}   </p>
+          <!-- <strong>גוגלע</strong> -->
+        </span>
+        <!-- <span class="user-role">גילגל</span> -->
+        <span class="user-status">
+          <!-- <i class="material-icons img-responsive img-rounded" id="person">person</i> -->
+      <i class="fa fa-circle"></i> 
+          <!-- <span>Online</span> -->
+        </span>
+      </div> 
+      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbar_header"
+        aria-controls="navbar_header" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar_header">
+        <!-- <button type="button" class="btn btn-default navbar-btn  btn-inverse  navbar-left  btn-xs "  >Register</button> -->
+        <!-- <button type="button" class="btn btn-default navbar-btn  navbar-left btn-xs btn-primary"  >Sign in</button> -->
+        <ul class="navbar-nav ml-auto">
+          <li id="loginBoss">
+
+            <a class="ghost-button btn btn-default navbar-btn  btn-inverse  navbar-left  btn-xs" id="boss"
+              (click)="gotoTop()" [routerLink]="['/login/login-boss']">כניסת מפרסם</a>
+          </li>
+          <li id="loginUser">
+            <a class="ghost-button btn btn-default navbar-btn  navbar-left btn-xs btn-primary" id="user"
+              (click)="gotoTop()" [routerLink]="['/login/login-user']">כניסת משתמש</a>
+
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/connect']" (click)="gotoTop()">צור קשר</a>
+          </li>
+          <li class="nav-item" (click)="gotoTop()">
+            <!-- <input  type="button" (click)="isBoss()" value="שיתוף משרה" id="buttonAddJob">  -->
+            <a id="addJobLink" class="nav-link" (click)="isBoss()" style="cursor: pointer">שיתוף משרה</a>
+
+          </li>
+          <!-- <label for={{j.JobId}}> קרא עוד </label>
+          <input type="checkbox" class="checkboxHidden" id={{j.JobId}}> -->
+          <li class="nav-item ">
+            <!-- box curmudgeon -->
+            <a class="nav-link" [routerLink]="['/about']" (click)="gotoTop()">אודות</a>
+          </li>
+          <!-- <li class="nav-item box bar">
+            <a class="nav-link " [routerLink]="['/add-company']">הוספת חברה </a>
+          </li> -->
+          <!-- <li class="nav-item ">
+      
+            <a class="nav-link" [routerLink]="['/rabanim']" (click)="gotoTop()"> רבנים</a>
+          </li> -->
+
+          <li class="nav-item ">
+            <!--  box bar -->
+            <a class="nav-link" [routerLink]="['/forum']" (click)="gotoTop()"> פורום</a>
+          </li>
+    
+          <li class="nav-item">
+            <!-- <a href="http://localhost:4200/show-jobs/123A456A789A">show jobs</a> -->
+
+            <a class="nav-link" [routerLink]="['/smart-agent']" (click)="gotoTop()">סוכן חכם</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['']" (click)="gotoTop()">בית <span class="sr-only"
+                (click)="gotoTop()">(current)</span></a>
+          </li>
+          <a class="navbar-brand" (click)="gotoTop()">
+            <img src="../../assets/logo-generic.png" width="60vw" height="auto">
+            <!-- <h1>אידאיללללל</h1> -->
+          </a>
+
+
+        </ul>
+      </div>
+    </nav>
+    <!-- <a [routerLink]="['/show-jobs',list | json]">giugoggiu</a>
+    <a href="http://localhost:4200/show-jobs?list=[1,2,3,]">kokoh</a> -->
+  </div>
+</header>
+
+<header id="header" *ngIf="isScroll==false">
+
+
+  <div class="header-nav">
+    <nav id="home-nav" style="background-color: black;"
+      class="navbar navbar-expand-md nav-pills navbar-inverse navbar-light bg-white fixed-top shadow-lg">
+
+
+
+       <span (click)="area()" title="אזור אישי"  class="withSvgStack_120drhm horizontal-box align-items-absolute-center" style="cursor: pointer; width:40px;height:40px;overflow:hidden;border:0px solid #e3e4e5;border-radius:50%;background-color:tomato;" data-reactid="128"><svg class="SvgIcon_8wfvj4" style="fill:#FFF;height:24px;width:24px;margin-left: 7px" viewBox="0 0 48 48" role="img" aria-labelledby="UserFilled24dc51df-4469-4a78-941c-a8f349caa67f UserFilled24dc51df-4469-4a78-941c-a8f349caa67fDesc" xmlns="http://www.w3.org/2000/svg" data-reactid="129"><title id="UserFilled24dc51df-4469-4a78-941c-a8f349caa67f" data-reactid="130">אזור אישי</title><path d="M33.5,10.4C33.7,5.1,29.2,1,24,1s-9.8,4.2-9.5,9.4c0.1,1.1,1.1,6.3,1.1,6.3c0.8,4.5,3.8,8.3,8.4,8.3s7.6-3.8,8.4-8.4C32.4,16.6,33.4,11.4,33.5,10.4z" role="presentation" data-reactid="131"></path><path d="M47,47H1l1.1-8.2c0.5-2.7,2.9-4.3,5.6-4.9L24,31l16.3,2.9c2.7,0.6,5.1,2.2,5.5,4.9L47,47z" role="presentation" data-reactid="132"></path></svg></span>
+
+      <div class="user-info">
+        <span class="user-name">
+            <p *ngIf="!userService.user&&!userService.boss">שלום אורחת</p>
+            <p *ngIf="userService.user?.UserName" title="התנתקי" (click)="trunOff()" class="logout">  {{userService.user?.UserName}}</p>
+            <p *ngIf="userService.boss?.BossName" title="התנתקי" (click)="trunOff()" class="logout">  {{userService.boss?.BossName}}</p>
+          <!-- <strong>גוגלע</strong> -->
+        </span>
+        <!-- <span class="user-role">גילגל</span> -->
+        <span class="user-status">
+          <!-- <i class="material-icons img-responsive img-rounded" id="person">person</i>   -->
+          <!-- <i class="fa fa-circle"></i> -->
+        </span>
+      </div>
+      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbar_header"
+        aria-controls="navbar_header" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar_header">
+        <!-- <button type="button" class="btn btn-default navbar-btn  btn-inverse  navbar-left  btn-xs "  >Register</button> -->
+        <!-- <button type="button" class="btn btn-default navbar-btn  navbar-left btn-xs btn-primary"  >Sign in</button> -->
+        <ul class="navbar-nav ml-auto">
+          <li id="loginBoss">
+
+            <a class="ghost-button btn btn-default navbar-btn  btn-inverse  navbar-left  btn-xs" id="boss"
+              (click)="gotoTop()" [routerLink]="['/login/login-boss']">כניסת מפרסם</a>
+          </li>
+          <li id="loginUser">
+            <a class="ghost-button btn btn-default navbar-btn  navbar-left btn-xs btn-primary" id="user"
+              (click)="gotoTop()" [routerLink]="['/login/login-user']">כניסת משתמש</a>
+
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/connect']" (click)="gotoTop()">צור קשר</a>
+          </li>
+          <li class="nav-item">
+            <!-- <input  type="button" (click)="isBoss()" value="שיתוף משרה" id="buttonAddJob">  -->
+            <a id="addJobLink" class="nav-link" (click)="isBoss()" style="cursor: pointer">שיתוף משרה</a>
+            <!-- <a id="addJobLink" class="nav-link" (click)="isBoss()">שיתוף משרה</a> -->
+
+          </li>
+          <!-- <label for={{j.JobId}}> קרא עוד </label>
+          <input type="checkbox" class="checkboxHidden" id={{j.JobId}}> -->
+          <li class="nav-item ">
+            <!-- box curmudgeon -->
+            <a class="nav-link" [routerLink]="['/about']" (click)="gotoTop()">אודות</a>
+          </li>
+          <!-- <li class="nav-item box bar">
+            <a class="nav-link " [routerLink]="['/add-company']">הוספת חברה </a>
+          </li> -->
+          <!-- <li class="nav-item ">
+           
+            <a class="nav-link" [routerLink]="['/rabanim']" (click)="gotoTop()"> רבנים</a>
+          </li> -->
+
+          <li class="nav-item ">
+            <!--  box bar -->
+            <a class="nav-link" [routerLink]="['/forum']" (click)="gotoTop()"> פורום</a>
+          </li>
+
+          <li class="nav-item">
+            <!-- <a href="http://localhost:4200/show-jobs/123A456A789A">show jobs</a> -->
+
+            <a class="nav-link" [routerLink]="['/smart-agent']" (click)="gotoTop()">סוכן חכם</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['']" (click)="gotoTop()">בית <span class="sr-only"
+                (click)="gotoTop()">(current)</span></a>
+          </li>
+          <a class="navbar-brand" (click)="gotoTop()">
+            <!-- <h1>אידאילל</h1> -->
+            <img src="../../assets/logo-generic.png" width="80vw" height="auto">
+          </a>
+
+
+        </ul>
+      </div>
+    </nav>
+    <!-- <a [routerLink]="['/show-jobs',list | json]">giugoggiu</a>
+    <a href="http://localhost:4200/show-jobs?list=[1,2,3,]">kokoh</a> -->
+  </div>
+</header>

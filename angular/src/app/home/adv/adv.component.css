@@ -1,0 +1,93 @@
+ /* .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  } */
+  body {
+    background-color: rgba(76,179,255,1.0);
+  
+  }
+  h2,h5,p,div{
+  direction: rtl;
+  }
+  
+  h2 {
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 1.25em;
+    color: rgb(255,255,255);
+    text-transform: lowercase;
+    text-align: center;
+    margin-top: 45px;
+  }
+  
+  #menu {
+    width: 60px;
+    height: 60px;
+    margin: 5% auto 0;
+    display: block;
+  }
+  
+  #menu > div {
+    margin-top: 9px;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    transition: all 0.8s;
+  }
+  
+  .bar-1 {
+    height: 10px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,1.0);
+    display: block;
+    float: left;
+  }
+  
+  .bar-2 {
+    height: 10px;
+    background-color: rgba(255,255,255,1.0);
+    display: block;
+    float: left;
+  }
+  
+  #middle-left {
+    border-radius: 10px 0 0 10px;
+    width: 30px;
+  }
+  
+  #middle-right {
+    border-radius: 0 10px 10px 0;
+    width: 30px;
+  }
+  
+  #menu:hover > #top {
+    -ms-transform: rotate(90deg) scale(0.75,1);
+    -webkit-transform: rotate(90deg) scale(0.75,1);
+    -moz-transform: rotate(90deg) scale(0.75,1);
+    transform: rotate(90deg) scale(0.75,1);
+    margin-top: 10px;
+  }
+  
+  #menu:hover > #middle-left {
+    -ms-transform: rotate(35deg) translate(7px,-2px);
+    -webkit-transform: rotate(35deg) translate(7px,-2px);
+    -moz-transform: rotate(35deg) translate(7px,-2px);
+    transform: rotate(35deg) translate(7px,-2px);
+    border-radius: 10px;
+  }
+  
+  #menu:hover > #middle-right {
+    -ms-transform: rotate(-35deg) translate(-7px,-2px);
+    -webkit-transform: rotate(-35deg) translate(-7px,-2px);
+    -moz-transform: rotate(-35deg) translate(-7px,-2px);
+    transform: rotate(-35deg) translate(-7px,-2px);
+    border-radius: 10px;
+  
+  }
+  
+  #menu:hover > #bottom {
+    margin-top: 15px;
+  }

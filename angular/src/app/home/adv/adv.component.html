@@ -1,0 +1,28 @@
+
+<br>
+<br>
+<div class="row justify-content-center ">
+  <div *ngFor="let a of advs" class="col-10" >
+    <div class="card mb-5 mb-lg-0">
+
+      <div class="card-body" style="  box-shadow: 0 0rem 1rem rgba(0,0,0,0.15);
+        background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/concrete-texture.png);">
+        <h5 class="card-title  text-uppercase text-center" style="    color: white;
+        background-color: #ccea3c;">{{a.AdvTitle}}</h5>
+        <div class="card-price text-center">
+          <p> {{a.AdvContent}}</p>
+          <p> <a >{{a.AdvMail}} </a></p>
+          <p> {{a.AdvPhone}}</p>
+        </div>
+      </div>
+ 
+    </div>
+    <br>
+    <br>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>

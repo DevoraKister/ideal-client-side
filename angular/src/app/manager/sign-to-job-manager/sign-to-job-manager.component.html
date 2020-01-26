@@ -1,0 +1,95 @@
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
+
+<!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+<!-- Position Column -->
+<!-- <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container> -->
+
+<!-- Name Column -->
+<!-- <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td> -->
+<!-- </ng-container> -->
+
+<!-- Weight Column -->
+<!-- <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td> -->
+<!-- </ng-container> -->
+
+<!-- Symbol Column -->
+<!-- <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td> -->
+<!-- </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->
+  <br>
+  <br>
+  <br>
+  <div *ngIf="load" style="width: 100vw;height:85vh;background-color:white">
+  <div class="loader2"  ></div>
+</div>
+<section class=" pagination-centered">
+  <div class="container justify-content-center">
+    <div class="row justify-content-center">
+      <!-- Free Tier -->
+      <div class="col-6" >
+        <h2>{{managerService.jobSign.length }}
+          חברות מחכות לנו עדין :) </h2>
+        <!-- <div class="col-lg-6"> -->
+        <div *ngFor="let j of managerService.jobSign" class="center-block">
+
+          <div class="card mb-5 mb-lg-0">
+            <div class="card-body">
+              <h5 class="card-title text-muted text-uppercase text-center">{{j.JobRole}}</h5>
+              <h6 class="card-price text-center"><span class="period">{{j.CompanyName}}</span></h6>
+              <hr>
+              <div class="fa-ul">
+                <p>לעבודה בחברת: </p>
+                <p>{{j.CompanyName}}</p>
+                <p *ngIf="j.AreaName"><b>באיזור: </b>{{j.AreaName}}</p>
+                <p *ngIf="j.CityName"><b>בעיר: </b>{{j.CityName}}</p>
+                <p><b>למקצוע: </b>{{j.SubjectName}}</p>
+                <p><b>לתפקיד: </b>{{j.JobRole}}</p>
+                <p><b>תאור העובדה</b></p>
+                <p>{{j.JobDescribe}}</p>
+                <p><b>שפורסמה בתאריך: </b>{{j.JobDateAdv}}</p>
+                <p><b>הדרישות חובה: </b>{{j.JobRequire}}</p>
+                <p><b>נסיון שדרוש: </b>{{j.JobExperience}} </p>
+                
+                <!-- <p><b>מס' כוכבים</b> {{j.JobStars}}</p> -->
+                <p><b>סביבת עבודה: </b>{{j.WSName}}</p>
+                <p><b>חסימת אינטרנט: </b>{{j.OutNetName}}</p>
+                <p><b>תחום משרה: </b>{{j.PartName}}</p>
+              
+
+              </div>
+
+              <!-- <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li> -->
+            </div>
+            <input type="button" (click)="getSignedUsers(j.JobId)" class="btn btn-block btn-primary text-uppercase"  value="לצפיה  באנשים הרשומים למשרה זו">
+            <!-- <a href="#" class="btn btn-block btn-primary text-uppercase">הרשם</a> -->
+          </div>
+          
+        </div>
+      </div>
+      <!-- Plus Tier -->
+
+      <!-- Pro Tier -->
+
+    </div>
+  </div>
+ <br>
+ <br>
+ <br>
+ <br>
+
+
+</section>

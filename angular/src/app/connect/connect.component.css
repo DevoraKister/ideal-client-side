@@ -1,0 +1,86 @@
+#body{
+    text-align: center;
+    direction: rtl;
+    /* color: aqua; */
+    /* background-color: #e9ecef; */
+    box-shadow: black;
+    /* background-image: url("../../assets/OGMQXH0.jpg"); */
+background-color:rgba(255, 255, 255, 0.5);
+    /* border-right: 1px solid #fff; */
+           font-weight: 100;color: #FFF; 
+            box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.2); 
+            /* background-image: url("../../assets/phone.png"); */
+            /* background-image: url("../../assets/OGMQXH0.jpg"); */
+            background-attachment: fixed;
+            background-size:cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            margin-bottom:0;
+}
+.container{
+
+}
+.jumbotron{
+    height: 100%;
+
+       /* border-right: 1px solid #fff;
+           font-weight: 100;color: #FFF; 
+            box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.2); */
+    /* width: 35vw; */
+    /* background-color: #cdcdcd; */
+    /* margin: 0 -2px; */
+ 
+    /* display: inline-block; */
+    /* font-family: 'roboto condensed', sans-serif; */
+    /* font-size: 60px; */
+
+    /* text-align: right; */
+    
+    /* cursor: pointer; */
+  
+    /* transition: width 0.2s; */
+    /* opacity: 0.5; */
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    /* transform: translateZ(0) perspective(500px) translate3d(0,0,0) skewY(-2deg);
+    -webkit-transform: translateZ(0) perspective(500px) translate3d(0,0,0) skewY(-2deg); */
+}
+
+.jumbotron{
+    /* background-image: url('../../assets/OGMQXH0.jpg'); */
+    /* background-attachment: fixed;
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat; */
+
+}
+.jumbotron:after{
+    /* content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; */
+
+    /* background-attachment: fixed;
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat; */
+    /* -webkit-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: skew(-45deg);
+    -ms-transform: skew(-45deg);
+    transform: skew(-45deg); */
+}
+textarea{
+    height: 200px;
+}
+/* 
+#img{
+    background-attachment: fixed;
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform: translateZ(0) perspective(500px) translate3d(0,0,0) skewY(-2deg);
+-webkit-transform: translateZ(0) perspective(500px) translate3d(0,0,0) skewY(-2deg);
+} */

@@ -1,0 +1,252 @@
+<!-- <div class="md-form active-cyan-2 mb-3" id="oo">
+  <input class="form-control" type="search" id="search6" aria-label="Search" mdbInput>
+  <label for="search6">Search</label>
+</div>
+ -->
+
+<!-- <div class="search-box">
+  <input placeholder="Search..."><span class="icon glyphicon glyphicon-search"></span>
+</div> -->
+
+<section class="justify-content-center pagination-centered" id="filters">
+  <div class="row">
+
+
+    <!-- </div>
+  <div class="row"> -->
+
+
+
+    <form [formGroup]="citiesForm" class="col-3" >
+      <mat-form-field  style="text-align: right;width: 136px" class="ci" >
+        <input type="text" name="city" [appAutocomleteValidate]="getCityNames()" matInput placeholder=" עיר"
+          formControlName="citiesGroup" required [matAutocomplete]="autoGroup1"  #city1 class="ci"
+          style="border: none;">
+        <mat-autocomplete #autoGroup1="matAutocomplete" #city1>
+          <mat-option *ngFor="let city of cityOptions | async" [value]="city.CityName" style="text-align: right">
+
+            {{city.CityName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <mat-form-field class="col-3" style="text-align: right">
+      <mat-label>אזור</mat-label>
+      <mat-select name="area" #area1  (selectionChange)="getCity(area1)" >
+        <mat-option *ngFor="let sub of jobParameters.Areas" [value]="sub.AreaId" style="text-align: right"(select)="getCity(area1)"  (mousemove)="getCity(area1)">
+          <!-- <mat-option (change)="getCity($event)" *ngFor="let sub of jobParameters.Areas" [value]="sub.AreaId"> -->
+          {{sub.AreaName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-3" style="text-align: right">
+      <mat-label>היקף משרה</mat-label>
+      <mat-select name="part" #part1>
+        <mat-option *ngFor="let part of jobParameters.Parts" [value]="part.PartId" style="text-align: right">
+          {{part.PartName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    
+    <!-- <mat-form-field class="col-3" style="text-align: right">
+      <mat-label>תחום </mat-label>
+      <mat-select name="sub" #sub1>
+        <mat-option *ngFor="let sub of jobParameters.SubjectJob" [value]="sub.SubId" style="text-align: right">
+          {{sub.SubName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <form [formGroup]="subForm"class="col-3">
+      <mat-form-field  style="text-align: right;width: 136px">
+        <input type="text" [appAutocomleteValidate]="getSubNames()" matInput placeholder=" תחום משרה"
+          formControlName="subsGroup" required [matAutocomplete]="autoGroup3" #sub1 class="ci">
+        <mat-autocomplete #autoGroup3="matAutocomplete" #sub1>
+          <mat-option *ngFor="let sub of subOptions | async" [value]="sub.SubName" style="text-align: right">
+
+            {{sub.SubName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+    <!-- <select #part1>
+    <option *ngFor="let part of jobParameters.Parts" value="{{part.PartId}}"> {{part.PartName}}</option>
+  </select>
+  <select #sub1>
+    <option *ngFor="let sub of jobParameters.SubjectJob" value="{{sub.SubId}}">{{sub.SubName}}</option>
+  </select> -->
+    <!-- <select #area1 (change)="getCity($event)">
+    <option *ngFor="let sub of jobParameters.Areas" value="{{sub.AreaId}}">{{sub.AreaName}}</option>
+  </select> -->
+  
+
+    <!-- <select *ngIf="cities" (change)="city($event.target.value)" class="col-3">
+      <option *ngFor="let c of cities" value="{{c.CityId}}">{{c.CityName}}</option>
+    </select>
+
+    <select *ngIf="!cities" (change)="city($event.target.value)" class="col-3">
+      <option *ngFor="let c of jobParameters.Cities" value="{{c.CityId}}">{{c.CityName}}</option>
+    </select> -->
+  </div>
+  <!-- <input type="button" (click)="getJobs(area1,part1,sub1)" value="חפש"> -->
+  <div class="row justify-content-center">
+    <button mat-raised-button  matTooltip="חפש" 
+    class="col-11" style="background-color:tomato"(click)="getJobs(area1,part1,sub1,city1)"
+      matTooltipPosition="above">
+      <i class="material-icons" >search</i>
+    </button>
+  </div>
+
+</section>
+<br>
+<br>
+<br>
+<!-- loading -->
+<!-- <app-loader *ngIf="load"></app-loader> -->
+<div class="loader2" *ngIf="load" style="top: 150px"></div>
+<!-- <div class="loader loader--style5" title="4" *ngIf="load" id="load">
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+    y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;"
+    xml:space="preserve">
+    <rect x="0" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0" begin="0"
+        dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+        begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="0" width="4" height="10" fill="#333">
+      <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+        begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+  </svg>
+</div> -->
+<div class="container justify-content-center" *ngIf="!load">
+<h3 style="text-align: center">לוח המשרות</h3>
+  <section class=" pagination-centered">
+    <div class="container justify-content-center" style=" border-radius: 4px;box-shadow: 0 0rem 1rem rgba(0,0,0,0.15);
+      background-color:   #8c0030;">
+      <div class="row">
+        <!-- Free Tier -->
+        <div style="width:100%">
+          <!-- <div class="col-lg-6"> -->
+            <img *ngIf="length==0"  src="../../../assets/non-job.png"style="width:50vw">
+          <!-- <p *ngIf="length==0" style="color: white;text-align:center;">אין משרות העונות להגדרת החיפוש.<br>לקבלת תוצאות
+            נסי לחפש ערכים דומים.</p> -->
+          <div *ngFor="let j of jobs" class="center-block  col-sm-12	col-md-12	col-lg-12	col-xl-12">
+
+            <div class="card mb-5 mb-lg-0">
+              <div style="text-align:center">
+              
+              </div>
+              <div class="card-body">
+                <h6>{{j.SubjectName}}</h6>
+                <h5 class="card-title text-muted text-uppercase text-center">{{j.JobRole}}</h5>
+                <h6 class="card-price text-center" (click)="getRecommend(j.JobId)" id="company"
+                  matTooltip="המלצות על מקום העבודה" matTooltipPosition="above"><span class="period">{{j.CompanyName}}</span>
+                </h6>
+                <hr>
+                <div class="fa-ul">
+                  <p class="date" *ngIf="j.JobDateShow<1">היום </p>
+                  <p class="date" *ngIf="j.JobDateShow>0">לפני {{j.JobDateShow}} יום</p>
+                <star-rating [value]="j.JobStars" checkedcolor="#ccea3c" uncheckedcolor="grey" size="20px"    readonly="true" ></star-rating>
+                  <p><b>תאור תפקיד </b></p>
+                  <p style="white-space:pre-wrap;">{{j.JobDescribe}}</p>
+                  <!-- <label for={{j.JobId}} (click)="more=!more" > -->
+                  <label for={{j.JobId}}>
+                    <i *ngIf="more" class="material-icons" matTooltip="עוד" matTooltipPosition="above">
+                      unfold_less
+                    </i>
+                    <!-- <i *ngIf="!more"  class="material-icons" matTooltip="פחות" matTooltipPosition="above">
+                      expand_less
+                    </i>  -->
+                  </label>
+                  <input type="checkbox" class="checkboxHidden" id={{j.JobId}}>
+                  <div class="facebook">
+                    <p ><b>דרישות</b></p>
+                    <p style="white-space:pre-wrap;">{{j.JobRequire}}</p>
+                    <p><b>מס' שנות ניסיון: </b>{{j.JobExperience}}</p>
+                    <p><b>סביבת עבודה: </b>{{j.WSName}}</p>
+                    <p><b>חסימת אינטרנט: </b>{{j.OutNetName}}</p>
+                    <p><b>היקף משרה: </b>{{j.PartName}}</p>
+                    <p><b>עיר: </b>{{j.CityName}}</p>
+                  </div>
+                  <!-- <input type="button" (click)="getRecommend(j.JobId)"  class="btn btn-block btn-primary text-uppercase" value="להמלצות למשרה"> -->
+
+                  <!-- <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li> -->
+                </div>
+                <!-- <button mat-raised-button (click)="registerToJob(j.JobId)" matTooltip="הרשם" matTooltipPosition="above"
+                  aria-label="Button that displays a tooltip in various positions">
+                  <i class="material-icons">
+                    send
+                  </i>
+                </button> -->
+                <input type="button" *ngIf="!j.JobSigned" (click)="registerToJob(j.JobId)" class="btn  btn-primary "
+                  value="הרשמה" [ngClass]="">
+                <p *ngIf="j.JobSigned" style="color: brown;text-align: center">קורות החיים שלך נשלחו בהצלחה!</p>
+                <button mat-raised-button *ngIf="!j.JobSigned" (click)="UpdateDetails(j.JobId)"
+                  matTooltip="עדכון פרטים לפני הרשמה" matTooltipPosition="above"
+                  aria-label="Button that displays a tooltip in various positions">
+                  <i class="material-icons" style="color: tomato;">
+                    <!-- <i class="material-icons" style="color: chartreuse;"> -->
+                    settings_backup_restore
+                  </i>
+                </button>
+                <!-- לבדוק -->
+                <!-- <input type="button" (click)="UpdateDetails(j.JobId)" class="btn  btn-primary text-uppercase" value="עדכון פרטים לפני הרשמה"><i class="material-icons"> -->
+
+
+                <!-- <input type="button" (click)="UpdateDetails(j.JobId)" class="btn btn-block btn-primary text-uppercase" value="עדכון פרטים לפני הרשמה"> -->
+                <!-- <a href="#" class="btn btn-block btn-primary text-uppercase">הרשם</a> -->
+                <!-- <button type="button" class="btn btn-default" ng-click="$ctrl.open('lg')">Large modal</button> -->
+
+              </div>
+            </div>
+          </div>
+          <!-- Plus Tier -->
+
+          <!-- Pro Tier -->
+
+        </div>
+      </div>
+    </div>
+    <div class="container justify-content-center" *ngIf="!load">
+      <div class="row">
+        <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+          (page)="pageEvent = getServerData($event);gotoJob()" [hidePageSize]="true" class="col-8">
+        </mat-paginator>
+
+      </div>
+
+      <!-- <div *ngIf="isShow">
+        
+          <label> <i class="material-icons" (click)="gotoTop()" id="scroll">keyboard_arrow_up</i></label>
+      </div> -->
+
+      <!-- <button *ngIf="isShow" (click)="gotoTop()" id="button-scroll">👆</button> -->
+    </div>
+  </section>
+  <!-- <div class="loader">
+      <div class="loader-inner">
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+      </div>
+    </div> 
+  -->

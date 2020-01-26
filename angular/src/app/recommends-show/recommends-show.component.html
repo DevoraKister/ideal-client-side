@@ -1,0 +1,24 @@
+<button mat-icon-button  (click)="onNoClick()" ><i class="material-icons">
+  close
+  </i></button>
+<h1 mat-dialog-title>הצצה להמלצה</h1>
+<div *ngIf="numRec==0" style="direction: rtl;text-align:center">עדין לא התפרסמו המלצות.</div>
+
+<mat-list role="list" *ngFor="let r of recommendList" style="    text-align: right;
+direction: rtl;">
+
+  <mat-list-item role="listitem"><i class="material-icons">
+    check
+    </i>{{r.RecomendInfo}}</mat-list-item>
+
+</mat-list>
+<div id="addRecommend" style="direction: rtl;text-align:center">
+<p>רוצה להוסיף המלצות משלך?<br>
+  כאן המקום לבטא את חוות דעתך החיובית על המשרה    :)
+</p>
+<textarea type="text"  [(ngModel)]="currentRecomend.RecomendInfo" #info></textarea>
+<br>
+<br>
+<button mat-button (click)="addRecomend()" type="button" value="ממליצה בחום" style="background-color: tomato">המליצי עכשיו</button>
+<!-- <button mat-button (click)="onNoClick()" style="background-color: chartreuse">סגירה</button> -->
+</div>

@@ -1,0 +1,84 @@
+<!-- <section class=" pagination-centered"> -->
+  <!-- <div class="container justify-content-center">
+    <div class="row">
+      <div>
+        <div *ngFor="let c of Companies" class="center-block">
+          <div class="fa-ul">
+            <p><b>:שם החברה</b>{{c.CompanyName}}</p>
+            <p><b>:אזור </b></p>
+            <select disabled>
+              <option *ngFor="let j of jobParameters.Areas" [selected]="j.AreaId ==c.CompanyAreaId?true:false">
+                {{j.AreaName}} </option>
+            </select>
+            <p><b>:עיר </b></p>
+             <select disabled>
+              <option *ngFor="let j of jobParameters.Cities" [selected]="j.CityId ==c.CompanyCityId?true:false">
+                {{j.CityName}}</option>
+            </select>
+            <p *ngIf="c.CompanyTel"><b>:טלפון </b></p>
+            <p>{{c.CompanyTel}}</p>
+            <p *ngIf="c.CompanyMail"><b>:מייל </b></p>
+            <p>{{c.CompanyMail}}</p>  
+          </div>
+          <input type="button" (click)="removeCompany(c.CompanyId)" class="btn btn-block btn-primary text-uppercase"
+            value="למחיקה" />
+        </div>
+
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <section class=" pagination-centered">
+    <div class="container justify-content-center">
+      <div class="row justify-content-center">
+        <!-- Free Tier -->
+        <div class="col-6">
+            <div>
+              <a class="nav-link" [routerLink]="['/add-company']">הוספת חברה </a>
+            </div>
+          <div *ngFor="let c of Companies" class="center-block">
+  
+            <div class="card mb-5 mb-lg-0">
+  
+              <div class="card-body">
+                
+                <h5 class="card-title text-muted text-uppercase text-center">{{c.CompanyName}}</h5>
+                <h6 class="card-price text-center"><span class="period">{{j.UserMail}}</span></h6>
+                <hr>
+                <div class="fa-ul">
+                  <p><b>:אזור </b></p>
+                  <select disabled>
+                    <option *ngFor="let j of jobParameters.Areas" [selected]="j.AreaId ==c.CompanyAreaId?true:false">
+                      {{j.AreaName}} </option>
+                  </select>
+                  <div class="facebook">
+                    <p><b>:עיר </b></p>
+                    <select disabled>
+                      <option *ngFor="let j of jobParameters.Cities" [selected]="j.CityId ==c.CompanyCityId?true:false">
+                        {{j.CityName}}</option>
+                    </select>
+                    <p *ngIf="c.CompanyTel"><b>:טלפון </b></p>
+                    <p>{{c.CompanyTel}}</p>
+                    <p *ngIf="c.CompanyMail"><b>:מייל </b></p>
+                    <p>{{c.CompanyMail}}</p>     </div>
+                </div>
+                <input type="button" (click)="removeCompany(c.CompanyId)" class="btn btn-block btn-primary text-uppercase"
+                value="למחיקה" />
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+   
+  
+  </section>
+  
+
+
+
+
+<!-- </section> -->

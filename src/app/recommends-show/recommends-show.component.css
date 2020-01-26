@@ -1,0 +1,37 @@
+
+
+
+
+
+input,h6,h1,.mat-list-item .mat-list{
+    direction: rtl;
+    text-align: right;  
+}
+h3{
+    text-align: center;
+}
+textarea{
+    width: 50vh;
+    height: 30vh;
+    text-align: right;
+}
+
+ p
+{
+    text-align: center;
+    direction: rtl;
+    color: #8c0030;
+}
+h1{
+    text-align: center;
+    font-family: 'Assistant';
+    color: greenyellow;
+}
+#addRecommend{
+    background-color: gainsboro;
+}
+
+
+.material-icons{
+    color: #8c0030;
+}

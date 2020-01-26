@@ -1,0 +1,22 @@
+p,input{
+    direction: rtl;
+    text-align: right;
+}
+h4,h3,h5{
+    direction: rtl;
+    text-align: center;
+    color: #8C0030;
+}
+
+#send:hover{
+    border: 1px solid #fff;
+    border-radius: 33px;
+    background-color: #8C0030;
+    text-align: center;   color: white;
+}
+#send{
+    border: 1px solid #8C0030;
+    border-radius: 33px;
+    background-color: #fff;
+    text-align: center;   color:  #8C0030;
+}

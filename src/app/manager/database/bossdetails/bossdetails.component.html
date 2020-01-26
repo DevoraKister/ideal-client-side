@@ -1,0 +1,58 @@
+<br>
+<br>
+<br>
+
+<section class=" pagination-centered">
+    <div class="container justify-content-center">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div>
+              <input type="button" (click)="addBoss()"  class="btn btn-block btn-primary text-uppercase" value="להוספת מפרסם משרה">
+          </div>
+          <br>
+          <br>
+          <br>
+          <div *ngFor="let j of bossList" class="center-block">
+  
+            <div class="card mb-5 mb-lg-0">
+  
+              <div class="card-body">
+  
+                <h5 class="card-title text-muted text-uppercase text-center">{{j.BossName}}</h5>
+                <h6 class="card-price text-center"><span class="period">{{j.BossMail}}</span></h6>
+                <hr>
+                <div class="fa-ul">
+                  <p *ngIf="j.BossTel"><b>:טלפון </b></p>
+                  <p style="white-space:pre-wrap;">{{j.BossTel}}</p>
+                  <div class="facebook">
+                    <P>תפקיד בחברה</P>
+                    <select disabled>
+                      <option *ngFor="let c of jobParameters.SubjectJob" [selected]="c.SubId ==j.BossSubId?true:false">
+                        {{c.SubName}}
+                      </option>
+                    </select>
+                    <p>איש קשר?</p>
+                    <input type="checkbox" checked="j.BossIsConnection==true?true:false" />
+                    <!-- <p> חברה:</p>
+                    <select [(ngModel)]="currentBoss.BossCompanyId" class="col" class="form-control">
+                      <option *ngFor="let c of company" [selected]="c.CompanyId== j.BossCompanyId?true:false">
+                        {{c.CompanyName}}</option>
+                    </select> -->
+                  </div>
+                </div>
+                <input type="button" (click)="removeBoss(j.BossId)" class="btn btn-block btn-primary text-uppercase"
+                  value="להסרת מפרסם המשרה ">
+                <input type="button" (click)="editBoss(j.BossId)" class="btn btn-block btn-primary text-uppercase"
+                  value="לעדכון פרטי מפרסם משרה ">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="pageEvent = getServerData($event)" [hidePageSize]="true">
+    </mat-paginator>
+  
+  </section>
+  

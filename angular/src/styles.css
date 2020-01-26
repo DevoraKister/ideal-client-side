@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+ @import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
+ .mat-dialog-container {
+     width: 50vw;
+     height: 50vw;
+     /* margin:  */
+ }
+ @import url('https://fonts.googleapis.com/css?family=Arimo|Assistant&display=swap');
+ p,div,li,option,body,h1,h2,h3,h4,h5,h6,button,.mat-checkbox-layout .mat-checkbox-label,ul{
+    font-family: 'Assistant', sans-serif;
+    color: rgb(61, 87, 87);
+    /* direction: rtl; */
+}
+.mat-raised-button{
+    font-family: 'Assistant', sans-serif;
+    color: white;
+    direction: rtl;
+}
+p{
+    /* font-size: 20px; */
+}
+textarea:focus,textarea[type]:focus, input:focus,select:focus, input[type]:focus, .uneditable-input:focus,.form-control:focus {   
+    border-color: rgba(129, 243, 95,0);
+    box-shadow: 0 1px 1px rgba(129, 243, 95, 0.075) inset, 0 0 8px rgba(129, 243, 95, 0.9);
+    outline: 0 none;
+}

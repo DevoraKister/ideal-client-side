@@ -1,0 +1,11 @@
+h4,h1,h5,h3{
+    text-align: center;
+    direction: rtl;
+}
+h3{
+    color: greenyellow;
+    font-weight: 300;
+}
+h1{
+    color: tomato;
+}

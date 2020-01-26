@@ -1,0 +1,91 @@
+<br>
+<h4 style="text-align: center;direction: rtl"> שיתוף משרה חדשה לחברת<b *ngIf="!isManagers"> {{companyName}} </b>
+  <select *ngIf="isManager" (change)="company1($event.target.value)" class="form__input" [ngModel]="companyId">
+    <option *ngFor="let c of company" value="{{c.CompanyId}}">{{c.CompanyName}}</option>
+
+  </select></h4>
+<!-- <mat-form-field class="col-3" style="text-align: right" *ngIf="isManager">
+  <mat-label>בחירת חברה</mat-label>
+  <mat-select name="com" #company>
+    <mat-option *ngFor="let c of company" [value]="c.CompanyId" style="text-align: right">
+      {{c.CompanyName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field> -->
+<a *ngIf="isManager" [routerLink]="['/add-company']" matTooltip="הוספת חברה חדשה למערכת">החברה לא קיימת?</a>
+
+
+<div class="container ">
+  <div class="row ">
+
+    <div class="col-sm-12	col-md-6	col-lg-6	col-xl-6 ">
+
+
+
+      <mat-form-field class="col-10" style="text-align: right">
+        <mat-label>מקצוע</mat-label>
+        <mat-select name="area" #subjectjob>
+          <mat-option *ngFor="let sub of jobparam.SubjectJob" [value]="sub.SubId" style="text-align: right">
+            {{sub.SubName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+      <p> הגדרת תפקיד</p>
+      <input type="text" [(ngModel)]="currentJob.JobRole" class="col-10 form-control" #role />
+      <p>מס' שנות נסיון נדרשות </p>
+      <input type="number" [(ngModel)]="currentJob.JobExperience" class="col-10" #experience />
+      <p> תאור המשרה </p>
+      <textarea id="JobDescribe" class="slide-down col-10 form-control" [(ngModel)]="currentJob.JobDescribe"
+        placeholder="פרטי משרה. ככל שתפרטי יותר יבינו אותך יותר." #describe></textarea>
+      <div>
+
+
+      </div>
+    </div>
+    <div class="col-sm-12	col-md-6	col-lg-6	col-xl-6 .offset-md-1">
+
+
+
+      <mat-form-field class="col-10 " style="text-align: right">
+        <mat-label>סביבת עבודה</mat-label>
+        <mat-select name="area" #workspace>
+          <mat-option *ngFor="let c of jobparam.Workspaces" [value]="c.WSId" style="text-align: right">
+            {{c.WSName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-10" style="text-align: right">
+        <mat-label> רמת סוג סינון</mat-label>
+        <mat-select name="area" #outnet>
+          <mat-option *ngFor="let c of jobparam.OutNets" [value]="c.OutNetId" style="text-align: right">
+            {{c.OutNetName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-10" style="text-align: right">
+        <mat-label>היקף משרה</mat-label>
+        <mat-select name="area" #parts>
+          <mat-option *ngFor="let c of jobparam.Parts" [value]="c.PartId" style="text-align: right">
+            {{c.PartName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p>דרישות </p>
+      <textarea id="JobRequire" class="slide-down col-10 form-control" [(ngModel)]="currentJob.JobRequire"
+        placeholder="פרטי משרה. ככל שתפרטי יותר יבינו אותך יותר." #require></textarea>
+      <p>הוסיפי</p>
+
+    </div>
+    <div class="col-sm-0	col-md-1	col-lg-1	col-xl-1 "></div>
+  </div>
+  <div class="row justify-content-center">
+    <button mat-raised-button matTooltip="חפש" class="col-6" style="background-color:tomato;text-align: center;  "
+      (click)="addParts(workspace,outnet,parts,subjectjob,role,describe,require,experience)"
+      matTooltipPosition="above">הוספה
+    </button><br><br>
+  </div>
+  <br><br><br><br>

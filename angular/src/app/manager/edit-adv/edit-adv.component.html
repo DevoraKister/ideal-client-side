@@ -1,0 +1,88 @@
+
+
+<div class="row justify-content-center">
+  <div class="col-4">
+
+    <br><br><br>
+    <h3>ניהול הפרסומות באתר</h3>
+    <br>
+    <h2>הוספת פרסומת מלל חדשה</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <input [(ngModel)]="adv.AdvTitle" placeholder="כותרת ראשית :(" formControlName="title" class="form-control col-12"
+        [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+      <br>
+      <br>
+      <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+        <div *ngIf="f.title.required">יש להכניס כותרת לפרסומת</div>
+      </div>
+
+      <textarea [(ngModel)]="adv.AdvContent" placeholder="תוכן ...." formControlName="content"
+        class="form-control col-12" [ngClass]="{ 'is-invalid': submitted && f.content.errors }"></textarea>
+
+      <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
+        <div *ngIf="f.content.required">הפרסומת מספרת ש???</div>
+      </div>
+      <br>
+      <br>
+      <div>
+        <!-- <textarea type="text" placeholder="תשובה" #ans></textarea> -->
+        <input type="text" placeholder="מייל " [(ngModel)]="adv.AdvMail" formControlName="email"
+          class="form-control col-12" [(ngModel)]="registerForm.email"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">אופס! שכחת למלא מייל</div>
+          <div *ngIf="f.email.errors.email">כתובת המייל לא תקנית</div>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <input type="text" [(ngModel)]="adv.AdvPhone" placeholder="טלפון:" formControlName="tel"
+        class="form-control col-12" [(ngModel)]="registerForm.tel"
+        [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" />
+      <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+        <div *ngIf="f.tel.errors.required">לא הכנסת טלפון</div>
+        <div *ngIf="f.tel.errors.pattern||f.tel.errors.minlength||f.tel.errors.maxlength">
+          מספר הטלפון לא תקין</div>
+      </div>
+
+      <div class="form-group">
+        <button  class="btn btn-primary col" style="background-color:tomato">שלח</button>
+      </div>
+    </form>
+    <br>
+    <br>
+    <h2>פרסומתמונה</h2>
+    <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+    <button (click)="addImgAdv()" class="btn btn-primary col" style="background-color:tomato">הוספת פרסומת</button>
+
+    <br>
+  </div>
+  <div class="col-4">
+
+    <br><br><br>
+    <div *ngFor="let advi of advsImg">
+      <a data-fancybox="gallery" [href]="advi.AdvLink">
+
+        <img [src]="advi.AdvLink" width="100%" style="width: 100%">
+      </a>
+      <input type="button" (click)="deleteAdv(advi.AdvId)" value="מחיקה">
+      <br>
+      <br>
+    </div>
+    <div *ngFor="let advt of advsText">
+      <div class="card-body"
+        style="    background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/concrete-texture.png);">
+        <h5 class="card-title  text-uppercase text-center" style="    color: white;
+          background-color: #ccea3c;">{{advt.AdvTitle}}</h5>
+        <div class="card-price text-center">
+          <p> {{advt.AdvContent}}</p>
+          <p> <a>{{advt.AdvMail}} </a></p>
+          <p> {{advt.AdvPhone}}</p>
+        </div>
+      </div>
+      <input type="button" (click)="deleteAdv(advt.AdvId)" value="מחיקה">
+    </div>
+    <br>
+  </div>
+</div>

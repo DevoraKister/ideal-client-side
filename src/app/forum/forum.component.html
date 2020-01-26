@@ -1,0 +1,89 @@
+
+<div class="justify-content-center row">
+  <h2 style="text-align: center" class="col-12">פורום הלכתי</h2>
+  
+  
+  <h4 class="col-12" style="text-align: center">שאלות העולות במקומות עבודה</h4>
+  <br />
+  <br />
+  <mat-form-field class="col-3" style="text-align: right">
+    <mat-label>תחום </mat-label>
+    <mat-select name="sub" #topic>
+      <mat-option *ngFor="let topic of qustionTopic" [value]="topic.TopicId" style="text-align: right">
+        {{topic.TopicName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <button mat-raised-button matTooltip="חפש" style="background-color:tomato" (click)="searchByTopic(topic.value)"
+    matTooltipPosition="above">
+    <i class="material-icons">search</i>
+  </button>
+
+</div>
+<ul class="chat-thread" *ngFor="let q of tempList">
+  <li>{{q.Question1}}</li>
+  <li>{{q.Answer}}</li>
+</ul>
+<br />
+<div class="container">
+  <div class="email" onclick="this.classList.add('expand')">
+    <div class="from">
+      <div class="from-contents">
+        <div class="avatar me"></div>
+        <div class="name">? רוצה להוסיף שאלה </div>
+      </div>
+    </div>
+    <div class="to">
+      <div class="to-contents">
+        <div class="top">
+          <div class="avatar-large me">
+            <p style="color: white">השאלה שלי</p>
+          </div>
+
+
+          <div class="x-touch"
+            onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();">
+            <div class="x">
+              <div class="line1"></div>
+              <div class="line2"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="row justify-content-center">
+            <svg class="twitter" viewBox="0 0 300 244.18703">
+              <g transform="translate(-539.17946,-568.85777)" id="layer1">
+              </g>
+            </svg>
+            <mat-form-field class="col-10" style="text-align: right">
+              <mat-label>תחום </mat-label>
+              <mat-select name="sub" #top>
+                <mat-option *ngFor="let topic of qustionTopic" [value]="topic.TopicId" style="text-align: right">
+                  {{topic.TopicName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="link">
+              <br>
+              <textarea type="text" #qu [(ngModel)]="currentQuestion.Question1"
+                style="height: 210px;width:230px;text-align:right;direction: rtl" placeholder="...שאלתי ובקשתי היא"></textarea>
+
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="link">
+
+              <button mat-raised-button matTooltip="שאל בני" style="background-color:tomato" class="col-12"
+                onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();"
+                (click)="askQuation(qu,top)" matTooltipPosition=" above">
+                שליחת השאלה </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

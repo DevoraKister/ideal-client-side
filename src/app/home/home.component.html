@@ -1,0 +1,49 @@
+<!-- <img src="../../assets/2442414.jpg" > -->
+<meta name="robots" content="index "> 
+
+<title>בית</title>
+<body id="home">
+  <div id="background-image">
+    <div id="container">
+      <div class="box center">
+        <div class="button center" (click)="gotoTop()" id="goToJobs">
+          <p id="getStart"> למשרות החמות <br><i class="material-icons" style="line-height: 0;">
+            keyboard_arrow_down
+            </i><br><i class="material-icons">
+              keyboard_arrow_down
+              </i></p>
+        </div>
+        <div class="drop"></div>
+      </div>
+    </div>
+
+    <!-- <input type="button" (click)="scrollToJobTable()" value="למשרות החמות" id="goToJobs"> -->
+  </div>
+
+<!-- 
+  <section class="cd-section">
+      <div class="cd-modal-action">
+         <a href="#0" class="btn" data-type="modal-trigger">Fire Modal Window</a>
+         <span class="cd-modal-bg"></span>
+      </div>
+   
+      <div class="cd-modal">
+         <div class="cd-modal-content">
+         </div>
+      </div>
+   
+      <a href="#0" class="cd-modal-close">Close</a>
+   </section> -->
+
+
+  <!-- <router-outlet></router-outlet> -->
+  <!-- <div id="container"> -->
+  <div class="row">
+    <app-adv class="col-sm-12	col-md-3	col-lg-3	col-xl-3 " ></app-adv>
+    <app-job-table class="col-sm-12	col-md-6	col-lg-6	col-xl-6"></app-job-table>
+    <!-- <router-outlet class="col-md-6 offset-md-3"></router-outlet> -->
+    <app-numbers class="col-sm-12	col-md-3	col-lg-3	col-xl-3 fixed-right"></app-numbers>
+  </div>
+  <app-information></app-information>
+  <!-- </div> -->
+</body>

@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class=" col-8" id="body">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-8">
+          <p>להלן פרטי המפרסם הנמצאים במאגר</p>
+          <br>
+          <p>שם:</p>
+          <input type="text" [(ngModel)]="currentBoss.BossName" class="col" class="form-control" />
+          <p>טלפון:</p>
+          <input type="text" [(ngModel)]="currentBoss.BossTel" class="col" class="form-control" />
+          <p>כתובת מייל:</p>
+          <input type="text" [(ngModel)]="currentBoss.BossMail" class="col" class="form-control" />
+          <div *ngIf="jobParameters"></div>
+          <p>תחום משרה:</p>
+          <select [(ngModel)]="currentBoss.BossSubId" class="col" class="form-control">
+            <option *ngFor="let sub of jobParameters.SubjectJob"
+              [selected]="sub.SubId == currentBoss.BossSubId?true:false">
+              {{sub.SubName}}</option>
+          </select>
+          <p> חברה:</p>
+          <select [(ngModel)]="currentBoss.BossCompanyId" class="col" class="form-control">
+            <option *ngFor="let c of company" [selected]="c.CompanyId== currentBoss.BossCompanyId?true:false">
+              {{c.CompanyName}}</option>
+          </select>
+          <p>האם אתה מסכים להיות איש קשר</p>
+          <!-- <input type="checkbox" true="currentBoss.BossIsConnection==true?true:false" />  -->
+          <br>
+          <button mat-raised-button matTooltip="הרשמי" class="col-12" style="background-color:tomato"
+            (click)="updateDetails()" matTooltipPosition="above">לעדכון
+          </button>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

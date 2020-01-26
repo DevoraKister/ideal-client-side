@@ -1,0 +1,52 @@
+
+<h1 style="text-align: center">שאלות המצפות לפתרונן</h1>
+<ul class="chat-thread" *ngFor="let q of questionList">
+    <li>{{q.Question1}}</li>
+    <textarea type="text" placeholder="תשובה" #ans ></textarea>
+    <br><br><br>
+
+    <input type="button" value="הוספת תשובה" (click)="addAnswer(q.QueId,ans.value)" 
+    style="background-color:tomato" mat-raised-button matTooltip="הוספה" class="btn">
+    <input type="button" value="השאלה לא ראויה? מחיקה" 
+  (click)="deleteQuestion(q.QueId)" class="btn"
+  style="background-color:rgb(90, 90, 90);float: right"
+     mat-raised-button matTooltip="מחיקה">
+    <br><br><br>
+  </ul>
+  <br><br><br>
+
+<!-- <img src="https://www.photo-art.co.il/wp-content/uploads/2015/06/IMG_40661.jpg"/> -->
+  <div class="row justify-content-center">
+      <!-- Free Tier -->
+      <div class="col-4">
+          <br><br><br>
+    <h3>הוספת שאלה ותשובה חדשה</h3>
+    <br>  
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <input [(ngModel)]="currentQuestion.Question1" placeholder="השאלה" formControlName="question"
+            class="form-control col-12">
+            <br>
+            <br>
+          <div *ngIf="submitted && f.question.errors" class="invalid-feedback">
+            <div *ngIf="f.name.question.required">יש להכניס שאלה</div>
+          </div>
+          <input [(ngModel)]="currentQuestion.Answer" placeholder="התשובה" formControlName="answer"
+            class="form-control col-12">
+          <div *ngIf="submitted && f.answer.errors" class="invalid-feedback">
+            <div *ngIf="f.name.answer.required">יש להכניס תשובה</div>
+          </div>
+          <br>
+          <br>
+          <h6>נושא</h6>
+          <select formControlName="topic" class="form-control col-12">
+            <option *ngFor="let t of topics" value="{{t.TopicId}}">{{t.TopicName}}</option>
+          </select>
+          <br>
+          <br>
+    
+          <input type="submit" value="הוסף שאלה" style="background-color:tomato" mat-raised-button matTooltip="הוספה" class="btn col-12">
+
+          <br><br><br>
+        </form>
+      </div>
+    </div>

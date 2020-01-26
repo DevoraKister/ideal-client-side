@@ -1,0 +1,55 @@
+<section class=" pagination-centered">
+    <div class="container justify-content-center">
+      <div class="row justify-content-center">
+        <!-- Free Tier -->
+        <div class="col-6">
+          <!-- <div class="col-lg-6"> -->
+          <div *ngFor="let j of jobs" class="center-block">
+  
+            <div class="card mb-5 mb-lg-0">
+  
+              <div class="card-body">
+                <h5 class="card-title text-muted text-uppercase text-center">{{j.CompanyName}}</h5>
+                 <h5 class="card-title text-muted text-uppercase text-center">{{j.SubjectName}}</h5>
+                <h6 class="card-price text-center"><span class="period">{{j.JobRole}}</span></h6>
+               
+                <hr>
+                <div class="fa-ul">
+                
+                    <div class="facebook">
+                        <p ><b>דרישות</b></p>
+                        <p style="white-space:pre-wrap;">{{j.JobRequire}}</p>
+                        <p><b>מס' שנות ניסיון: </b>{{j.JobExperience}}</p>
+                        <p><b>סביבת עבודה: </b>{{j.WSName}}</p>
+                        <p><b>חסימת אינטרנט: </b>{{j.OutNetName}}</p>
+                        <p><b>תחום משרה: </b>{{j.PartName}}</p>
+                        <p><b>אזור: </b>{{j.AreaName}}</p>
+                        <p><b>עיר: </b>{{j.CityName}}</p>
+                        <p><b>עוד פרטים על המשרה:</b>{{j.JobDescribe}}</p>
+                        <p><b>תאריך פרסום המשרה:</b>{{j.JobDateAdv}}</p>
+                        <!-- <div *ngIf="j.JobDateCaughtJob!=null">
+                            <p> <b>תאריך שהושמה המשרה </b>{{j.JobDateCaughtJob}} </p>
+                        </div> -->
+                        <p><b>שקלול הכוכבים למשרה זו????</b> {{j.JobStars}}</p>
+                        <p></p>האם יש אנשים שרשומים למשרה??<b>{{j.JobSigned}}</b>
+                        <p><b>תאריך שהמפרסם הכניס אותה:</b>{{j.JobDateShow}}</p>
+                      </div>
+
+                </div>
+                <input type="button" (click)="removeJob(j.JobId)" class="btn btn-block btn-primary text-uppercase"
+                  value="להסרת המשרה ">
+                  <input type="button" (click)="editJob(j.UserId)" class="btn btn-block btn-primary text-uppercase"
+                  value="לעדכון פרטי המשרה ">
+                  <!-- <input type="button" (click)="removeUser(j.UserId)" class="btn btn-block btn-primary text-uppercase"
+                  value="להסרת המשתמש"> -->
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="pageEvent = getServerData($event)" [hidePageSize]="true">
+    </mat-paginator>
+  

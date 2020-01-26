@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class=" col-8" id="body">
+      <div class="row justify-content-center">
+  
+        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-8">
+          <p>להלן פרטי המשתמש הנמצאים במאגר</p>
+          <br>
+          <p>שם:</p>
+          <input type="text" [(ngModel)]="currentUser.UserName" class="col" class="form-control" />
+          <p>טלפון:</p>
+          <input type="text" [(ngModel)]="currentUser.UserTel" class="col" class="form-control" />
+          <p>כתובת מייל:</p>
+          <input type="text" [(ngModel)]="currentUser.UserMail" class="col" class="form-control" />
+          <div *ngIf="jobParameters"></div>
+          <p>תחום משרה:</p>
+          <select [(ngModel)]="currentUser.UserSubId" class="col" class="form-control">
+            <option *ngFor="let sub of jobParameters.SubjectJob"
+              [selected]="sub.SubId == currentUser.UserSubId?true:false">
+              {{sub.SubName}}</option>
+          </select>
+          <p>עיר</p>
+          <select [(ngModel)]="currentUser.UserCityId" class="col" class="form-control">
+            <option *ngFor="let c of jobParameters.Cities" [selected]="c.CityId == currentUser.UserCityId?true:false">
+              {{c.CityName}}</option>
+          </select>
+          <p>חלקי משרה</p>
+          <select [(ngModel)]="currentUser.UserPartId" class="col" class="form-control">
+            <option *ngFor="let p of jobParameters.Parts" [selected]="p.PartId == currentUser.UserPartId?true:false">
+              {{p.PartName}}</option>
+          </select>    
+          <br>
+          <button mat-raised-button matTooltip="הרשמי" class="col-12" style="background-color:tomato"
+            (click)="updateDetails()" matTooltipPosition="above">לעדכון
+          </button>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

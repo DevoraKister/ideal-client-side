@@ -1,0 +1,31 @@
+
+<button mat-icon-button  (click)="onNoClick()" ><i class="material-icons" >
+  close
+  </i></button>
+<h3>עדכון פרטים</h3>
+<h5>להלן פרטייך האישיים כפי
+  שמופיעים במערכת:</h5>
+<!-- <p>אלו פרטי הזהות השמורים במערכת:</p> -->
+<p>שם:</p>
+<input type="text" [(ngModel)]="currentUser.UserName" class="form-control">
+<p>טלפון:</p>
+<input type="text" [(ngModel)]="currentUser.UserTel" class="form-control">
+<p>כתובת מייל:</p>
+<input type="text" [(ngModel)]="currentUser.UserMail" class=" form-control">
+
+<!-- <pdf-viewer [src]="'../../assets/דגם 2 קורות חיים.pdf'"  -->
+<!-- <pdf-viewer [src]="cv" 
+[render-text]="true"
+style="display: block;"
+[original-size]="true"
+></pdf-viewer> -->
+<!-- <ngx-doc-viewer [url]="../../assets/tre.docx" viewer="office" style="width:100%;height:50vh;"></ngx-doc-viewer> -->
+<!-- <input type="button" value="הרשמי ללא שינוי" (click)="updateDetails()"/> -->
+<h4>קורות חיים</h4>
+<a target="_blank" [href]="cv" class=" form-control" style="text-align: center">לצפיה בקו"ח</a>
+<div class="form-group">
+  <p>שינוי הקו"ח</p>
+  <input type="file" id="file" title="שינוי קו'ח" (change)="handleFileInput($event.target.files)" class="form-control">
+</div>
+<input type="button" class="btn btn-primary" id="send"  value="אישור" (click)="SignToJob()"  class="form-control"/>
+
